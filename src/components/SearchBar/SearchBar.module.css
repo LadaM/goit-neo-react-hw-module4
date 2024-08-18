@@ -1,0 +1,16 @@
+.input {
+    min-height: 20px;
+    min-width: 200px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    padding: 8px 12px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 8px;
+}
