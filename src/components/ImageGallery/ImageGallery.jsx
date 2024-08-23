@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
+import css from './ImageGallery.module.css';
+import ImageCard from './ImageCard.jsx';
 
 const ImageGallery = ({ images }) => {
   return (
-    <ul>
+    <ul className={css.container}>
       {/* TODO: extract image card component */}
       {images.map(image => (
-        <li key={image.id}>
-          <div>
-          <img src={image.urls.small} alt={image.alt_description} />
-          </div>
+        <li key={image.id}  className={css.card}>
+          <ImageCard image={image} />
         </li>
       ))}
     </ul>

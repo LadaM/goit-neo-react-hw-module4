@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 16px auto;
+}
+
+.card {
+    width: calc((100% - 48px) / 4);
+    height: 156px;
+    overflow: hidden;
+}

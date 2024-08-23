@@ -18,6 +18,21 @@
     margin: 0 auto;
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: unset;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
 a {
     font-weight: 500;
     color: #646cff;
