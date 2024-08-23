@@ -9,7 +9,22 @@
 }
 
 .card {
-    width: calc((100% - 48px) / 4);
-    height: 156px;
+    width: calc((100% - 48px) / 4); /* 4 images per row */
+    height: 200px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }

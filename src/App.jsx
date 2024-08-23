@@ -3,6 +3,8 @@ import SearchBar from './components/SearchBar/SearchBar';
 import { searchPhotos } from './api/unsplashApi';
 import ImageGallery from './components/ImageGallery/ImageGallery.jsx';
 import { toast, Toaster } from 'react-hot-toast';
+import { Hourglass } from 'react-loader-spinner';
+import css from './App.module.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,7 +16,6 @@ function App() {
       if (!searchQuery) return;  // Don't fetch if the query is empty
 
       setLoading(true);
-      setError(null);
       try {
         const data = await searchPhotos(searchQuery);
         toast.success(`Found ${data.total} images`);
@@ -38,7 +39,17 @@ function App() {
     <>
       <div><Toaster /></div>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      {loading && <p>Loading...</p>}
+      {loading && <div className={css.loaderContainer}>
+        <Hourglass
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="hourglass-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          colors={['#306cce', '#72a1ed']}
+        />
+      </div>}
       {imageSearchResult && <ImageGallery images={imageSearchResult} />}
     </>
   );
