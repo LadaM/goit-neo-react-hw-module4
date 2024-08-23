@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import { searchPhotos } from './api/unsplashApi';
 import ImageGallery from './components/ImageGallery/ImageGallery.jsx';
+import { toast, Toaster } from 'react-hot-toast';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [imageSearchResult, setImageSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -17,10 +17,10 @@ function App() {
       setError(null);
       try {
         const data = await searchPhotos(searchQuery);
-        console.log(data);
+        toast.success(`Found ${data.total} images`);
         setImageSearchResult(data.results);  // Set the imageSearchResult in state
       } catch (err) {
-        setError('Failed to fetch imageSearchResult');
+        toast.error(`Failed to fetch imageSearchResult: ${err.message}`);
       } finally {
         setLoading(false);
       }
@@ -36,9 +36,9 @@ function App() {
 
   return (
     <>
+      <div><Toaster /></div>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
       {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
       {imageSearchResult && <ImageGallery images={imageSearchResult} />}
     </>
   );
