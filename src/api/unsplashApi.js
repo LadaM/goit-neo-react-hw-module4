@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// Create an Axios instance with default settings
 const unsplashApi = axios.create({
   baseURL: 'https://api.unsplash.com',
   headers: {
@@ -8,7 +7,6 @@ const unsplashApi = axios.create({
   },
 });
 
-// Function to search photos with pagination and basic error handling
 export const searchPhotos = async (query, page = 1, perPage = 10) => {
   if (!query) {
     throw new Error('Please enter a search query');
@@ -30,7 +28,8 @@ export const searchPhotos = async (query, page = 1, perPage = 10) => {
       throw new Error('No results found');
     }
   } catch (error) {
-    handleError(error);
+    // re-throw the error with humanized error message
+    humanizeError(error);
   }
 }
 
@@ -43,23 +42,21 @@ export const getPhotoById = async (id) => {
     if (response && response.data) {
       return response.data;
     } else {
-      throw new Error('No photo found with the provided ID');
+      throw new Error('No photo found with the provided ID'); // the error is re-thrown in the catch block
     }
   } catch (error) {
-    handleError(error);
+    // re-throw the error with humanized error message
+    humanizeError(error);
   }
 };
 
 
-function handleError(error) {
+function humanizeError(error) {
   if (error.response) {
-    console.error('Error Response:', error.response.data);
     throw new Error(`Error: ${error.response.status} - ${error.response.data.errors.join(', ')}`);
   } else if (error.request) {
-    console.error('Error Request:', error.request);
     throw new Error('Network error, please try again later.');
   } else {
-    console.error('Error Message:', error.message);
     throw new Error('An unexpected error occurred.');
   }
 }

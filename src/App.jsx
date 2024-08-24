@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
-import { searchPhotos, getPhotoById } from './api/unsplashApi';
+import { getPhotoById, searchPhotos } from './api/unsplashApi';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import { toast, Toaster } from 'react-hot-toast';
-import { Hourglass } from 'react-loader-spinner';
-import css from './App.module.css';
 import ImageModal from './components/ImageModal/ImageModal.jsx';
+import Loader from './components/Loader/Loader.jsx';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,6 +17,7 @@ function App() {
     const fetchPhotos = async () => {
       if (!searchQuery) return;
 
+      setImageSearchResult(null); // resetting the previous search results
       setLoading(true);
       try {
         const data = await searchPhotos(searchQuery);
@@ -52,22 +52,8 @@ function App() {
     <>
       <div><Toaster /></div>
       <SearchBar setSearchQuery={setSearchQuery} searchQuery={searchQuery} />
-      {loading && (
-        <div className={css.loaderContainer}>
-          <Hourglass
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="hourglass-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            colors={['#306cce', '#72a1ed']}
-          />
-        </div>
-      )}
-      {imageSearchResult && (
-        <ImageGallery images={imageSearchResult} onImageClick={handleImageClick} />
-      )}
+      {loading && <Loader />}
+      {imageSearchResult && <ImageGallery images={imageSearchResult} onImageClick={handleImageClick} />}
       <ImageModal isOpen={isModalOpen} onRequestClose={closeModal} image={selectedImage} />
     </>
   );

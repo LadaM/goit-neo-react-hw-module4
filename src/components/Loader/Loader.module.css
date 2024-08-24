@@ -1,0 +1,6 @@
+.loaderContainer {
+    height: 100vh; /* 100% isn't working to center the loader vertically*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
