@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const ImageCard = ({ image }) => {
   return (
-      <img src={image.urls.small} alt={image.alt_description} />
+    <img src={image.urls.small} alt={image.alt_description} />
   );
 };
 

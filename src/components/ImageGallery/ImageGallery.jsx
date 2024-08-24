@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import css from './ImageGallery.module.css';
 import ImageCard from './ImageCard.jsx';
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images, onImageClick }) => {
   return (
     <ul className={css.container}>
-      {/* TODO: extract image card component */}
       {images.map(image => (
-        <li key={image.id}  className={css.card}>
+        <li key={image.id}  className={css.card} onClick={() => onImageClick(image.id)}>
           <ImageCard image={image} />
         </li>
       ))}
@@ -17,5 +16,7 @@ const ImageGallery = ({ images }) => {
 
 ImageGallery.propTypes = {
   images: PropTypes.array.isRequired,
+  onImageClick: PropTypes.func.isRequired,
 };
+
 export default ImageGallery;

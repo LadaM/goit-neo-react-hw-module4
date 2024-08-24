@@ -1,0 +1,26 @@
+.modalOverlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent {
+    max-width: 70%;
+    max-height: 70%;
+    position: relative;
+    user-select: none;
+    outline: none;
+    background: none;
+    border: none;
+}
+
+.image {
+    object-fit: scale-down;
+    object-position: center;
+}
