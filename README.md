@@ -1,8 +1,13 @@
-# React + Vite
+# HW 4: Topic 8 - React Hooks and API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Requirements
+- Searching the images by search query using the Unsplash API
+- Loading more images when button is clicked
+- Clicking on an image should open a modal with the image
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Used technologies
+- React
+- axios
+- react-loader-spinner
+- react-hot-toast
+- react-modal
