@@ -1,4 +1,4 @@
-import css from '../../App.module.css';
+import css from './Loader.module.css';
 import { Hourglass } from 'react-loader-spinner';
 import React from 'react';
 

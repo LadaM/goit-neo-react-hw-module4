@@ -1,0 +1,16 @@
+.loadMoreButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #306cce;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 20px auto;
+    display: block;
+}
+
+.loadMoreButton:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
