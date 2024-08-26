@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import { getPhotoById, searchPhotos } from './api/unsplashApi';
 import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -20,7 +20,10 @@ function App() {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      if (!searchQuery) return;
+      if (!searchQuery) {
+        toast.error('Please enter a search query');
+        return;
+      }
 
       setLoading(true);
       try {
