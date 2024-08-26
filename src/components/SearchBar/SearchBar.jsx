@@ -5,9 +5,6 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
   const onSubmit = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     let query = event.currentTarget.elements.query.value.trim();
-    if (!query) {
-      return;
-    }
     setSearchQuery(query);
     event.currentTarget.reset();
   };
