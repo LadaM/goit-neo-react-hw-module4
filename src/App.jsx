@@ -20,11 +20,6 @@ function App() {
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      if (!searchQuery) {
-        toast.error('Please enter a search query');
-        return;
-      }
-
       setLoading(true);
       try {
         const data = await searchPhotos(searchQuery, page, perPage);
